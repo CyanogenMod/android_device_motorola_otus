@@ -1,20 +1,41 @@
-Unified Device Tree For Motorola E
-==================================
+#CM12.1 tree for Moto E 3G (2015)
+* Based off https://github.com/CyanogenMod/android_device_motorola_condor
 
-The Motorola (codenamed _"Condor"_) is a low-range smartphone from Motorola mobility.
-It was announced on May 2014.
+##Dependencies:
+````
+sudo apt-get install bison build-essential curl flex git gnupg gperf libesd0-dev liblz4-tool libncurses5-dev libsdl1.2-dev libwxgtk2.8-dev libxml2 libxml2-utils lzop openjdk-6-jdk openjdk-6-jre pngcrush schedtool squashfs-tools xsltproc zip zlib1g-dev
+sudo apt-get install g++-multilib gcc-multilib lib32ncurses5-dev lib32readline-gplv2-dev lib32z1-dev schedtool libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 zlib1g lib32z1 lib32bz2-1.0
+````
+You also need the repo tool for cloning Android source trees.
 
-Basic   | Spec Sheet
--------:|:-------------------------
-CPU     | Dual-core 1.2 GHz Cortex-A7
-CHIPSET | Qualcomm Snapdragon 200
-GPU     | Adreno 302
-Memory  | 1GB RAM
-Shipped Android Version | 4.4.2
-Storage | 4GB
-MicroSD | Upto 32 GB
-Battery | 1980 mAh
-Display | 4.91 x 2.55 x 0.48 in
-Camera  | 5 MP, 2592 х 1944 pixels
+##Set up and get the repo:
+````
+mkdir ~/cm12.1-tree
+cd ~/cm12.1-tree
+repo init -u git://github.com/CyanogenMod/android.git -b cm-12.1
+mkdir -p .repo/local_manifests
+````
 
-![Motorola E](https://camo.githubusercontent.com/65db99a8598e2e96a3b1e88f76020559ac23618c/687474703a2f2f63646e322e67736d6172656e612e636f6d2f76762f6269677069632f6d6f746f726f6c612d6d6f746f2d652e6a7067 "Motorola E")
+Create a file .repo/local_manifests/otus.xml and paste this in:
+````
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <project name="sultanqasim/android_device_motorola_otus" path="device/motorola/otus" remote="github" />
+    <project name="sultanqasim/android_kernel_motorola_otus" path="kernel/motorola/msm8610" remote="github" />
+    <project name="CyanogenMod/android_hardware_qcom_fm" path="hardware/qcom/fm" remote="github" />
+    <project name="CyanogenMod/android_device_qcom_common" path="device/qcom/common" remote="github" />
+</manifest>
+````
+
+Then fetch the repositories
+````
+repo sync
+````
+
+##Building:
+````
+source build/envsetup.sh
+breakfast otus
+make clean
+brunch otus
+````
