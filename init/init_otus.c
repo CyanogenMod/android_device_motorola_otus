@@ -1,5 +1,5 @@
 /*
-   Copyright (c) 2014, The Linux Foundation. All rights reserved.
+   Copyright (c) 2014-2015, The Linux Foundation. All rights reserved.
 
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
@@ -56,32 +56,12 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
 	property_set("ro.product.model", "Moto E");
     property_get("ro.boot.radio", radio);
     if (ISMATCH(radio, "0x1")) {
-        /* xt1021 */
-        property_set("ro.product.device", "condor_umts");
-        property_set("ro.build.product", "condor_umts");
-        property_set("ro.build.description", "condor_retgb-user 4.4.4 KXC21.5-40 46 release-keys");
-        property_set("ro.build.fingerprint", "motorola/condor_retgb/condor_umts:4.4.4/KXC21.5-40/46:user/release-keys");
-        property_set("ro.mot.build.customerid", "retgb");
-        property_set("ro.telephony.default_network", "0");
-        property_set("persist.radio.multisim.config", "");
-    } else if (ISMATCH(radio, "0x5")) {
-        /* xt1022 */
-        property_set("ro.product.device", "condor_umtsds");
-        property_set("ro.build.product", "condor_umtsds");
-        property_set("ro.build.description", "condor_retaildsds-user 4.4.4 KXC21.5-40 46 release-keys");
-        property_set("ro.build.fingerprint", "motorola/condor_retaildsds/condor_umtsds:4.4.4/KXC21.5-40/46:user/release-keys");
-        property_set("ro.mot.build.customerid", "retaildsdsall");
-        property_set("ro.telephony.default_network", "0,1");
-        property_set("persist.radio.multisim.config", "dsds");
-        property_set("persist.radio.dont_use_dsd", "true");
-        property_set("persist.radio.plmn_name_cmp", "1");
-    } else if (ISMATCH(radio, "0x6")) {
-        /* xt1023 */
-        property_set("ro.product.device", "condor_umts");
-        property_set("ro.build.product", "condor_umts");
-        property_set("ro.build.description", "condor_retuaws-user 4.4.3 KXC21.5-34 26 release-keys");
-        property_set("ro.build.fingerprint", "motorola/condor_retuaws/condor_umts:4.4.3/KXC21.5-34/26:user/release-keys");
-        property_set("ro.mot.build.customerid", "retusa_aws");
+        /* xt1505 */
+        property_set("ro.product.device", "otus");
+        property_set("ro.build.product", "otus");
+        property_set("ro.build.description", "otus_retuglb-user 5.0.2 LXC22.99-12 11 release-keys");
+        property_set("ro.build.fingerprint", "motorola/otus_retuglb/otus:5.0.2/LXC22.99-12/11:user/release-keys");
+        property_set("ro.mot.build.customerid", "retusa_glb");
         property_set("ro.telephony.default_network", "0");
         property_set("persist.radio.multisim.config", "");
     }
