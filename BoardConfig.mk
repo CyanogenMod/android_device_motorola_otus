@@ -14,9 +14,9 @@
 # limitations under the License.
 #
 
--include vendor/motorola/condor/BoardConfigVendor.mk
+-include vendor/motorola/otus/BoardConfigVendor.mk
 
-LOCAL_PATH := device/motorola/condor
+LOCAL_PATH := device/motorola/otus
 
 BOARD_VENDOR := motorola-qcom
 
@@ -43,7 +43,7 @@ TARGET_NO_BOOTLOADER := true
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
 TARGET_KERNEL_SOURCE := kernel/motorola/msm8610
-TARGET_KERNEL_CONFIG := cm_condor_defconfig
+TARGET_KERNEL_CONFIG := msm8610-squid_defconfig
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 
@@ -138,11 +138,11 @@ BOARD_VOLD_MAX_PARTITIONS := 40
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
 # Asserts
-TARGET_OTA_ASSERT_DEVICE := xt1021,xt1022,xt1023,condor_umts,condor_umtsds,condor
+TARGET_OTA_ASSERT_DEVICE := xt1021,xt1022,xt1023,otus_umts,otus_umtsds,otus
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm
-TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_condor.c
+TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_otus.c
 TARGET_UNIFIED_DEVICE := true
 
 # Recovery
@@ -154,7 +154,7 @@ HAVE_SELINUX := true
 include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += \
-    device/motorola/condor/sepolicy
+    device/motorola/otus/sepolicy
 
 BOARD_SEPOLICY_UNION += \
     atvc.te \

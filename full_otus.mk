@@ -20,13 +20,13 @@
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit from condor device
-$(call inherit-product, device/motorola/condor/device.mk)
+# Inherit from otus device
+$(call inherit-product, device/motorola/otus/device.mk)
 
-PRODUCT_NAME := full_condor
-PRODUCT_DEVICE := condor
+PRODUCT_NAME := full_otus
+PRODUCT_DEVICE := otus
 PRODUCT_BRAND := motorola
-PRODUCT_MODEL := condor
+PRODUCT_MODEL := otus
 PRODUCT_MANUFACTURER := motorola
 
-$(call inherit-product-if-exists, vendor/motorola/condor/condor-vendor.mk)
+$(call inherit-product-if-exists, vendor/motorola/otus/otus-vendor.mk)

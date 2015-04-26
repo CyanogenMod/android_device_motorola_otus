@@ -14,12 +14,12 @@
 # limitations under the License.
 #
 
-# This file includes all definitions that apply to ALL condor devices, and
-# are also specific to condor devices
+# This file includes all definitions that apply to ALL otus devices, and
+# are also specific to otus devices
 #
 # Everything in this directory will become public
 
-LOCAL_PATH := device/motorola/condor
+LOCAL_PATH := device/motorola/otus
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
@@ -199,7 +199,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.hwc.mdpcomp.enable=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.opendelta.device=condor \
+    ro.opendelta.device=otus \
     persist.sys.logkit.ctrlcode=0 \
     ro.vendor.extension_library=/vendor/lib/libqc-opt.so \
     ro.usb.mtp=0x2e82 \
