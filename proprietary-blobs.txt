@@ -63,16 +63,9 @@ etc/firmware/sensorhubfw.bin
 etc/firmware/sensorhubver.txt
 etc/firmware/synaptics-boe-s2316-15020301-175833-otus.tdat
 etc/firmware/synaptics-inx-s2316-15020302-175833-otus.tdat
-etc/firmware/wlan/prima/WCNSS_cfg.dat
-etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
 etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
-etc/init.ath3k.bt.sh
-etc/init.crda.sh
-etc/init.qcom.audio.sh
-etc/init.qcom.bt.sh
 etc/init.qcom.coex.sh
 etc/init.qcom.efs.sync.sh
-etc/init.qcom.fm.sh
 etc/init.qcom.modem_links.sh
 etc/init.qcom.post_boot.sh
 etc/init.qcom.sdio.sh
