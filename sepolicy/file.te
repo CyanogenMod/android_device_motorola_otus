@@ -13,5 +13,5 @@ type vibeamp_sysfs, fs_type, sysfs_type;
 type pds_file, file_type;
 
 #fsg
-type condor_firmware, file_type;
+type otus_firmware, file_type;
 type fsg_file, fs_type, contextmount_type;
