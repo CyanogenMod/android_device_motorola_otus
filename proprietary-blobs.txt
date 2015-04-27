@@ -23,7 +23,6 @@ bin/irsc_util
 bin/kpgather
 bin/location-mq
 bin/mbm_spy
-bin/mm-pp-daemon
 bin/mm-qcamera-daemon
 bin/mpdecision
 bin/netmgrd
@@ -66,7 +65,6 @@ etc/firmware/synaptics-boe-s2316-15020301-175833-otus.tdat
 etc/firmware/synaptics-inx-s2316-15020302-175833-otus.tdat
 etc/firmware/wlan/prima/WCNSS_cfg.dat
 etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
-etc/firmware/wlan/prima/WCNSS_qcom_wlan_factory_nv.bin
 etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 etc/init.ath3k.bt.sh
 etc/init.crda.sh
