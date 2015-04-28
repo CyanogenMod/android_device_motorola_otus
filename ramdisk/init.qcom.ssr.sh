@@ -29,12 +29,12 @@
 ssr_str="$1"
 IFS=,
 ssr_array=($ssr_str)
-declare -i subsys_mask=0
+typeset -i subsys_mask=0
 
 # check user input subsystem with system device
 ssr_check_subsystem_name()
 {
-    declare -i i=0
+    typeset -i i=0
     subsys=`cat /sys/bus/msm_subsys/devices/subsys$i/name`
     while [ "$subsys" != "" ]
     do
@@ -91,6 +91,20 @@ do
             fi
         ;;
     esac
+done
+
+# loop through all subsystems and disable SSR only for adsp
+typeset -i j=0
+typeset -i adsp_mask=0
+subsys=`cat /sys/bus/msm_subsys/devices/subsys$j/name`
+while [ "$subsys" != "" ]
+do
+    if [ "$subsys" == "adsp" ]; then
+        adsp_mask=$(( 1 << ( j + 1 ) ))
+        subsys_mask=$(( subsys_mask & ( ~adsp_mask ) ))
+    fi
+    j=$j+1
+    subsys=`cat /sys/bus/msm_subsys/devices/subsys$j/name`
 done
 
 # enable selected subsystem restart

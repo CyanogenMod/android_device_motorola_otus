@@ -11,22 +11,32 @@ do
 done
 shift $(($OPTIND-1))
 
+scriptname=${0##*/}
+
 debug()
 {
 	[ $dbg_on ] && echo "Debug: $*"
 }
 
+notice()
+{
+	echo "$*"
+	echo "$scriptname: $*" > /dev/kmsg
+}
+
 error_and_leave()
 {
-	err_code=$1
+	local err_msg
+	local err_code=$1
 	case $err_code in
-		1)  echo "Error: No response from touch IC";;
-		2)  echo "Error: Cannot read property $1";;
-		3)  echo "Error: No matching firmware file found";;
-		4)  echo "Error: Touch IC is in bootloader mode";;
-		5)  echo "Error: Touch provides no reflash interface";;
-		6)  echo "Error: Touch driver is not running";;
+		1)  err_msg="Error: No response from touch IC";;
+		2)  err_msg="Error: Cannot read property $2";;
+		3)  err_msg="Error: No matching firmware file found";;
+		4)  err_msg="Error: Touch IC is in bootloader mode";;
+		5)  err_msg="Error: Touch provides no reflash interface";;
+		6)  err_msg="Error: Touch driver is not running";;
 	esac
+	notice "$err_msg"
 	exit $err_code
 }
 
@@ -45,6 +55,7 @@ done
 [ -z "$touch_driver_link" ] && error_and_leave 6
 
 touch_path=/sys/devices/${touch_driver_link#*devices/}
+panel_path=/sys/devices/virtual/graphics/fb0
 debug "sysfs touch path: $touch_path"
 
 [ -f $touch_path/doreflash ] || error_and_leave 5
@@ -71,21 +82,45 @@ let dec_cfg_id_boot=0; dec_cfg_id_latest=0;
 read_touch_property()
 {
 	property=""
-	debug "retrieving property: [$touch_path/$1]"
+	debug "retrieving touch property: [$touch_path/$1]"
 	property=$(cat $touch_path/$1 2> /dev/null)
 	debug "touch property [$1] is: [$property]"
 	[ -z "$property" ] && return 1
 	return 0
 }
 
+read_panel_property()
+{
+	property=""
+	debug "retrieving panel property: [$panel_path/$1]"
+	property=$(cat $panel_path/$1 2> /dev/null)
+	debug "panel property [$1] is: [$property]"
+	[ -z "$property" ] && return 1
+	return 0
+}
+
 find_latest_config_id()
 {
-	debug "scanning dir for files matching [$1]"
+	local fw_mask=$1
+	local skip_fields=$2
+	local dec max z str_hex i
+
 	str_cfg_id_latest=""
+
+	debug "scanning dir for files matching [$fw_mask]"
 	let dec=0; max=0;
-	for file in $(ls $1 2>/dev/null);
+	for file in $(ls $fw_mask 2>/dev/null);
 	do
-		x=${file#*-}; z=${x#*-}; str_hex=${z%%-*};
+		z=$file
+		i=0
+		while [ ! $i -eq $skip_fields ];
+		do
+			z=${z#*-}
+			i=$((i+1))
+		done
+
+		str_hex=${z%%-*};
+
 		let dec=0x$str_hex
 		if [ $dec -gt $max ];
 		then
@@ -93,7 +128,7 @@ find_latest_config_id()
 			str_cfg_id_latest=$str_hex
 		fi
 	done
-	unset dec max x z str_hex
+
 	[ -z "$str_cfg_id_latest" ] && return 1
 	return 0
 }
@@ -111,6 +146,9 @@ then
 fi
 debug "touch product id: $touch_product_id"
 
+touch_product_id=${touch_product_id%[a-z]}
+debug "touch product id without vendor suffix: $touch_product_id"
+
 read_touch_property buildid || error_and_leave 1
 str_cfg_id_boot=${property#*-}
 let dec_cfg_id_boot=0x$str_cfg_id_boot
@@ -125,25 +163,69 @@ hwrev_id=$(getprop $hwrev_property 2> /dev/null)
 [ -z "$hwrev_id" ] && error_and_leave 2 $hwrev_property
 debug "hw revision: $hwrev_id"
 
+read_panel_property "panel_supplier"
+supplier=$property
+if [ -z "$supplier" ];
+then
+	debug "driver does not report panel supplier"
+fi
+debug "panel supplier: $supplier"
+
 cd $firmware_path
 
-debug "search for best hw revision match"
+find_best_match()
+{
+	local hw_mask=$1
+	local panel_supplier=$2
+	local skip_fields fw_mask
+
+	while [ ! -z "$hw_mask" ]; do
+		if [ "$hw_mask" == "-" ]; then
+			hw_mask=""
+		fi
+
+		if [ ! -z $panel_supplier ];
+		then
+			skip_fields=3
+			fw_mask="$touch_vendor-$panel_supplier-$touch_product_id-*-$product_id$hw_mask.*"
+		else
+			skip_fields=2
+			fw_mask="$touch_vendor-$touch_product_id-*-$product_id$hw_mask.*"
+		fi
+
+		find_latest_config_id "$fw_mask" "$skip_fields" && break
+
+		hw_mask=${hw_mask%?}
+	done
+
+	[ -z "$str_cfg_id_latest" ] && return 1
+
+	if [ -z $panel_supplier ]; then
+		firmware_file=$(ls $touch_vendor-$touch_product_id-$str_cfg_id_latest-*-$product_id$hw_mask.*)
+	else
+		firmware_file=$(ls $touch_vendor-$panel_supplier-$touch_product_id-$str_cfg_id_latest-*-$product_id$hw_mask.*)
+	fi
+	notice "Firmware file for upgrade $firmware_file"
+
+	return 0
+}
+
 hw_mask="-$hwrev_id"
-while [ ! -z "$hw_mask" ]; do
-	if [ "$hw_mask" == "-" ]; then
-		hw_mask=""
-	fi
-	find_latest_config_id "$touch_vendor-$touch_product_id-*-$product_id$hw_mask.*"
-	if [ $? -eq 0 ]; then
-		break;
-	fi
-        hw_mask=${hw_mask%?}
-done
+debug "hw_mask=$hw_mask"
 
-[ -z "$str_cfg_id_latest" ] && error_and_leave 3
+match_not_found=1
+if [ ! -z "$supplier" ];
+then
+	debug "search for best hw revision match with supplier"
+	find_best_match "-$hwrev_id" "$supplier"
+	match_not_found=$?
+fi
 
-firmware_file=$(ls $touch_vendor-$touch_product_id-$str_cfg_id_latest-*-$product_id$hw_mask.*)
-debug "firmware file for upgrade $firmware_file"
+if [ "$match_not_found" -ne "0" ];
+then
+	debug "search for best hw revision match without supplier"
+	find_best_match "-$hwrev_id" || error_and_leave 3
+fi
 
 if [ $dec_cfg_id_boot -ne $dec_cfg_id_latest ] || [ "$bl_mode" == "1" ];
 then
@@ -160,17 +242,24 @@ then
 	str_cfg_id_new=${property#*-}
 	debug "firmware config ids: expected $str_cfg_id_latest, current $str_cfg_id_new"
 
-	echo "Touch firmware config id at boot time $str_cfg_id_boot"
-	echo "Touch firmware config id in the file $str_cfg_id_latest"
-	echo "Touch firmware config id currently programmed $str_cfg_id_new"
+	notice "Touch firmware config id at boot time $str_cfg_id_boot"
+	notice "Touch firmware config id in the file $str_cfg_id_latest"
+	notice "Touch firmware config id currently programmed $str_cfg_id_new"
+
+	if [ "$(getprop ro.build.motfactory)" == "1" ];
+	then
+		echo "Factory build detected! Resetting device after touch firmware upgrade..."
+		sleep 1
+		reboot
+	fi
 else
-	echo "Touch firmware is up to date"
+	notice "Touch firmware is up to date"
 fi
 
-unset device_property hwrev_property
+unset device_property hwrev_property supplier
 unset str_cfg_id_boot str_cfg_id_latest str_cfg_id_new
-unset dec_cfg_id_boot dec_cfg_id_latest
-unset hwrev_id product_id touch_product_id
+unset dec_cfg_id_boot dec_cfg_id_latest match_not_found
+unset hwrev_id product_id touch_product_id scriptname
 unset synaptics_link firmware_path touch_path
 unset bl_mode dbg_on hw_mask firmware_file property
 

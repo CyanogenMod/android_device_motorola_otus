@@ -1,4 +1,4 @@
-# Copyright (c) 2012-2013,2014 The Linux Foundation. All rights reserved.
+# Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -25,21 +25,6 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-/dev/null                 0666   root       root
-/dev/zero                 0666   root       root
-/dev/full                 0666   root       root
-/dev/ptmx                 0666   root       root
-/dev/tty                  0666   root       root
-/dev/random               0666   root       root
-/dev/urandom              0666   root       root
-
-/dev/ashmem               0666   root       root
-/dev/binder               0666   root       root
-/dev/tspdrv               0666   root       root
-/dev/ttyHSL0             0660   radio      system
-# logger should be world writable (for logging) but not readable
-/dev/log/*                0666   root       log
-
 # the DIAG device node is not world writable/readable.
 /dev/diag                 0660   system     qcom_diag
 /dev/ttydiag0             0660   system     qcom_diag
@@ -57,6 +42,8 @@
 /dev/smd5                 0660   system     system
 /dev/smd6                 0660   system     system
 /dev/smd7                 0660   bluetooth  bluetooth
+
+/dev/block/platform/msm_sdcc.1/by-name/frp 0600 system system
 
 #permissions for CSVT
 /dev/smd11                0660   radio      radio
@@ -125,7 +112,7 @@
 /dev/msm_vidc_dec_sec     0660   system     audio
 /dev/msm_vidc_enc         0660   system     audio
 /dev/msm_rotator          0660   system     system
-/dev/hw_random            0664   root       root
+/dev/hw_random            0600   root       root
 /dev/adsprpc-smd          0660   media      camera
 
 #permissions for audio
@@ -152,6 +139,7 @@
 /dev/msm_preproc_ctl      0660   system     audio
 /dev/msm_rtac             0660   system     audio
 /dev/msm_voicememo        0660   system     audio
+/dev/radio0               0640   fm_radio   fm_radio
 /dev/smd3                 0660   bluetooth  net_bt_stack
 /dev/smd2                 0660   bluetooth  net_bt_stack
 /dev/ttyHSL1              0660   system     system
@@ -180,6 +168,17 @@
 /sys/devices/virtual/optical_sensors/lightsensor    ls_poll_delay  0660    input    system
 /sys/devices/virtual/input/input*                   poll           0660    input    system
 /sys/devices/virtual/input/input*                   pollrate_ms    0660    input    system
+/sys/devices/virtual/input/input*                   delay          0660    root     input
+/sys/devices/virtual/input/input*                   op_mode        0660    root     input
+/sys/devices/virtual/input/input*                   offset_x       0664    root     input
+/sys/devices/virtual/input/input*                   offset_y       0664    root     input
+/sys/devices/virtual/input/input*                   offset_z       0664    root     input
+/sys/devices/virtual/input/input*                   rept_xy        0664    root     input
+/sys/devices/virtual/input/input*                   rept_z         0664    root     input
+/sys/devices/virtual/input/input*                   bandwidth      0664    root     input
+/sys/devices/virtual/input/input*                   range          0664    root     input
+/sys/devices/virtual/input/input*                   driver/enable  0660    root     input
+/sys/devices/virtual/input/input*                   driver/delay   0660    root     input
 
 # wlan
 /dev/wcnss_wlan           0660   system     system
@@ -220,7 +219,8 @@
 /dev/i2c-5                0660   root       system
 
 # SECURITY
-/dev/sec                  0660   system     drmrpc
+/dev/qseecom              0660   system     mot_tpapi
+/dev/sec                  0660   system     mot_tpapi
 
 # AK8963 Magnetometer
 /dev/akm8963              0660   compass    compass
@@ -243,6 +243,11 @@
 /dev/stm401_as            0660  compass    compass
 /dev/stm401_ms            0660  compass    compass
 
+# Moto Sensors
+/dev/stml0xx               0660  system     compass
+/dev/stml0xx_as            0660  compass    compass
+/dev/stml0xx_ms            0660  compass    compass
+
 # Validity Sensor
 /dev/vfsspi               0660  fingerp    fingerp
 
@@ -251,3 +256,6 @@
 
 # haptic
 /dev/drv2605              0660  system     system
+
+# FB Quickdraw
+/dev/fb_quickdraw         0660  system     graphics
