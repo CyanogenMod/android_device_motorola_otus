@@ -64,6 +64,7 @@ etc/firmware/sensorhubver.txt
 etc/firmware/synaptics-boe-s2316-15020301-175833-otus.tdat
 etc/firmware/synaptics-inx-s2316-15020302-175833-otus.tdat
 etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+etc/gps.conf
 etc/izat.conf
 etc/permissions/com.motorola.android.tcmd.xml
 etc/permissions/com.motorola.motodisplay.fd.screenoff.xml
@@ -72,7 +73,6 @@ etc/permissions/com.motorola.sensorhub.stml0.xml
 etc/permissions/com.qcom.fmradio.xml
 etc/permissions/com.qualcomm.location.vzw_library.xml
 etc/permissions/com.qualcomm.location.xml
-etc/permissions/fixed_imes.xml
 etc/permissions/qcnvitems.xml
 etc/permissions/qcrilhook.xml
 etc/quipc.conf
