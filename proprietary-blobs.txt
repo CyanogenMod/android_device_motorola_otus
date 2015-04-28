@@ -64,12 +64,6 @@ etc/firmware/sensorhubver.txt
 etc/firmware/synaptics-boe-s2316-15020301-175833-otus.tdat
 etc/firmware/synaptics-inx-s2316-15020302-175833-otus.tdat
 etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
-etc/init.qcom.coex.sh
-etc/init.qcom.efs.sync.sh
-etc/init.qcom.modem_links.sh
-etc/init.qcom.post_boot.sh
-etc/init.qcom.sdio.sh
-etc/init.qcom.wifi.sh
 etc/izat.conf
 etc/permissions/com.motorola.android.tcmd.xml
 etc/permissions/com.motorola.motodisplay.fd.screenoff.xml
