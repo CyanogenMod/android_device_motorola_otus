@@ -2,13 +2,9 @@ bin/ATFWD-daemon
 bin/PktRspTest
 bin/ap_gain.bin
 bin/ap_gain_mmul.bin
-bin/apanic_annotate.sh
 bin/aplogcat
 bin/aplogd
-bin/app_process
-bin/batch
 bin/batt_health
-bin/brctl
 bin/btnvtool
 bin/charger_monitor
 bin/cplay
@@ -52,7 +48,6 @@ bin/n_smux
 bin/nandread
 bin/netmgrd
 bin/newfs_msdos
-bin/printenv
 bin/ptf
 bin/ptt_socket_app
 bin/qmi_motext_hook
@@ -78,7 +73,6 @@ bin/stml0xx
 bin/subsystem_ramdump
 bin/tcmd
 bin/tcmdhelp
-bin/test
 bin/test_diag
 bin/thermal-engine
 bin/time_daemon
