@@ -1,6 +1,5 @@
 bin/ATFWD-daemon
 bin/PktRspTest
-bin/aapt
 bin/ap_gain.bin
 bin/ap_gain_mmul.bin
 bin/apanic_annotate.sh
@@ -469,8 +468,6 @@ vendor/lib/libxtadapter.so
 vendor/lib/libxtwifi_ulp_adaptor.so
 vendor/lib/libxtwifi_zpp_adaptor.so
 vendor/lib/mediadrm/libdrmclearkeyplugin.so
-vendor/lib/mediadrm/libdrmclearkeyplugin.sobin/aapt
-vendor/lib/mediadrm/libdrmclearkeyplugin.sobin/adsprpcd
 vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib/rfsa/adsp/libadsp_denoise_skel.so
 vendor/lib/rfsa/adsp/libadsp_jpege_skel.so
