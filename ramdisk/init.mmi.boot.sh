@@ -2,22 +2,22 @@
 
 function advance_system_time()
 {
-	min_utc=$1
-	systime=`date +%s`
+        min_utc=$1
+        systime=`date +%s`
 
-	# Is current date less then minumun acceptable date
-	if [ $systime -lt $min_utc ]
-	then
-		echo "set system time to $min_utc"
-		date $min_utc
-	fi
+        # Is current date less then minumun acceptable date
+        if [ $systime -lt $min_utc ]
+        then
+                echo "set system time to $min_utc"
+                date $min_utc
+        fi
 }
 
 # Advance system time to SW build date as early as possible
 # in the script to avoid race condition with time daemon
 build_date_utc=`getprop ro.build.date.utc`
 if [ ! -z $build_date_utc ]; then
-	advance_system_time $build_date_utc
+        advance_system_time $build_date_utc
 fi
 
 # We take this from cpuinfo because hex "letters" are lowercase there
@@ -134,16 +134,14 @@ then
 	fi
 fi
 
-# Let kernel know our image version/variant/crm_version
-image_version="10:"
-image_version+=`getprop ro.build.id`
-image_version+=":"
-image_version+=`getprop ro.build.version.incremental`
-image_variant=`getprop ro.product.name`
-image_variant+="-"
-image_variant+=`getprop ro.build.type`
-oem_version=`getprop ro.build.version.codename`
-echo 10 > /sys/devices/soc0/select_image
-echo $image_version > /sys/devices/soc0/image_version
-echo $image_variant > /sys/devices/soc0/image_variant
-echo $oem_version > /sys/devices/soc0/image_crm_version
+# Set the Android property ro.config.low_ram if the device has less
+# than 512MB RAM available to the OS. This property is used by
+# dalvik to disable certain memory intensive features.
+meminfo_memtotal=`cat /proc/meminfo | /system/bin/grep MemTotal`
+memtotal_with_kb_suffix="${meminfo_memtotal#*: }"
+memtotal_kb="${memtotal_with_kb_suffix/kB/}"
+
+if [ "$memtotal_kb" -le 524288 ]; then
+   setprop ro.config.low_ram true
+fi
+
