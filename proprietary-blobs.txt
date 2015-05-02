@@ -135,12 +135,6 @@ etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 etc/ftm_test_config
 etc/gps.conf
 etc/hcidump.sh
-etc/init.qcom.coex.sh
-etc/init.qcom.efs.sync.sh
-etc/init.qcom.modem_links.sh
-etc/init.qcom.post_boot.sh
-etc/init.qcom.sdio.sh
-etc/init.qcom.wifi.sh
 etc/install-recovery.cfg
 etc/izat.conf
 etc/lowi.conf
@@ -206,7 +200,6 @@ etc/security/suplcerts.bks
 etc/thermal-engine-otus.conf
 etc/voicemail-conf.xml
 etc/whitelist_appops.xml
-etc/wifi/p2p_supplicant.conf
 etc/xtra_root_cert.pem
 etc/xtwifi.conf
 lib/hw/camera.msm8610.so

@@ -1,5 +1,5 @@
 #!/system/bin/sh
-# Copyright (c) 2012, The Linux Foundation. All rights reserved.
+# Copyright (c) 2009-2010, 2012, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -24,12 +24,12 @@
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#
 
-LOG_TAG="qcom-bluetooth"
+LOG_TAG="qcom-bt-wlan-coex"
 LOG_NAME="${0}:"
 
-hciattach_pid=""
+coex_pid=""
+ath_wlan_supported=`getprop wlan.driver.ath`
 
 loge ()
 {
@@ -47,42 +47,68 @@ failed ()
   exit $2
 }
 
-start_hciattach ()
+start_coex ()
 {
-  /system/bin/hciattach -n /dev/ttyHS2 ath3k 3000000 &
-  hciattach_pid=$!
-  logi "start_hciattach: pid = $hciattach_pid"
+  case "$ath_wlan_supported" in
+      "2")
+       echo "ATH WLAN Chip ID AR6004 is enabled"
+       /system/bin/abtfilt -d -z -n -m -a -w wlan0 &
+      ;;
+      "1")
+       echo "ATH WLAN Chip ID is enabled"
+       # Must have -d -z -n -v -s -w wlan0 parameters for atheros btfilter.
+       /system/bin/abtfilt -d -z -n -v -q -s -w wlan0 &
+      ;;
+      "0")
+       echo "WCN WLAN Chip ID is enabled"
+       # Must have -o turned on to avoid daemon (otherwise we cannot get pid)
+       /system/bin/btwlancoex -o $opt_flags &
+      ;;
+      *)
+       echo "NO WLAN Chip ID is enabled, so enabling ATH as default"
+       # Must have -d -z -n -v -s -w wlan0 parameters for atheros btfilter.
+       /system/bin/abtfilt -d -z -n -v -q -s -w wlan0 &
+      ;;
+  esac
+  coex_pid=$!
+  logi "start_coex: pid = $coex_pid"
 }
 
-kill_hciattach ()
+kill_coex ()
 {
-  logi "kill_hciattach: pid = $hciattach_pid"
-  ## careful not to kill zero or null!
-  kill -TERM $hciattach_pid
+  logi "kill_coex: pid = $coex_pid"
+  kill -TERM $coex_pid
   # this shell doesn't exit now -- wait returns for normal exit
 }
 
-# mimic hciattach options parsing -- maybe a waste of effort
-USAGE="hciattach [-n] [-p] [-b] [-t timeout] [-s initial_speed] <tty> <type | id> [speed] [flow|noflow] [bdaddr]"
+# mimic coex options parsing -- maybe a waste of effort
+USAGE="${0} [-o] [-c] [-r] [-i] [-h]"
 
-while getopts "blnpt:s:" f
+while getopts "ocrih" f
 do
   case $f in
-  b | l | n | p)  opt_flags="$opt_flags -$f" ;;
-  t)      timeout=$OPTARG;;
-  s)      initial_speed=$OPTARG;;
+  o | c | r | i | h)  opt_flags="$opt_flags -$f" ;;
   \?)     echo $USAGE; exit 1;;
   esac
 done
-shift $(($OPTIND-1))
 
 # init does SIGTERM on ctl.stop for service
-trap "kill_hciattach" TERM INT
+trap "kill_coex" TERM INT
 
-logi "start hciattach"
-start_hciattach
+#Selectively start coex module
+target=`getprop ro.board.platform`
 
-wait $hciattach_pid
-logi "Bluetooth stopped"
-
+if [ "$target" == "msm8960" ] && [ "$ath_wlan_supported" != "2" ]; then
+     logi "btwlancoex/abtfilt is not needed"
+else
+     # Build settings may not produce the coex executable
+     if ls /system/bin/btwlancoex || ls /system/bin/abtfilt
+     then
+         start_coex
+         wait $coex_pid
+         logi "Coex stopped"
+     else
+         logi "btwlancoex/abtfilt not available"
+     fi
+fi
 exit 0
