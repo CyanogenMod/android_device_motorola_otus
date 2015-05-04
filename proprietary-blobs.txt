@@ -209,11 +209,6 @@ lib/hw/power.msm8610.so
 lib/hw/sensorhub.msm8610.so
 lib/hw/sensors.msm8610.so
 lib/libGLESv3.so
-lib/libOmxAacEnc.so
-lib/libOmxAmrEnc.so
-lib/libOmxEvrcEnc.so
-lib/libOmxQcelp13Enc.so
-lib/libOmxVdecHevc.so
 lib/libSTML0Updater.so
 lib/libactions_irservice_stm.so
 lib/libadropbox.so
