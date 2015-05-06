@@ -36,9 +36,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/touch_dev.idc:system/usr/idc/touch_dev.idc
 
 PRODUCT_COPY_FILES += \
-    frameworks/av/media/libstagefright/data/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml
-
-PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/sec_config:system/etc/sec_config \
     $(LOCAL_PATH)/thermal-engine-8610.conf:system/etc/thermal-engine-8610.conf
 
@@ -63,7 +60,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 
@@ -100,6 +98,11 @@ PRODUCT_PACKAGES += \
     tinymix \
     libqcomvisualizer \
     libqcomvoiceprocessing
+
+# Camera
+PRODUCT_PACKAGES += \
+    camera.msm8610 \
+    libmm-qcamera
 
 # Filesystem
 PRODUCT_PACKAGES += \
