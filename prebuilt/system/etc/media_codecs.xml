@@ -57,6 +57,8 @@
             <Quirk name="requires-global-flush" />
         </MediaCodec>
         -->
+        <MediaCodec name="OMX.qcom.audio.decoder.amrwbplus" type="audio/amr-wb-plus" >
+        </MediaCodec>
         <!-- txwv64, IKVPREL1L-1169, Disable QCELP, EVRC
         <MediaCodec name="OMX.qcom.audio.decoder.Qcelp13" type="audio/qcelp" >
             <Quirk name="requires-global-flush" />
@@ -89,4 +91,5 @@
         -->
     </Decoders>
         <Include href="media_codecs_google_video.xml" />
+        <Include href="media_codecs_ffmpeg.xml" />
 </MediaCodecs>
