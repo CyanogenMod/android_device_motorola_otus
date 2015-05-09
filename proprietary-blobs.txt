@@ -1,3 +1,4 @@
+bin/adsprpcd
 bin/ATFWD-daemon
 bin/PktRspTest
 bin/ap_gain.bin
