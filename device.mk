@@ -183,20 +183,12 @@ PRODUCT_PACKAGES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
-    p2p_supplicant_overlay.conf \
-    wpa_supplicant_overlay.conf
-
-# Wifi
-PRODUCT_PACKAGES += \
     hostapd.accept \
     hostapd_default.conf \
     hostapd.deny \
     hostapd \
     wpa_supplicant \
-    wpa_supplicant.conf \
-    dhcpcd.conf
-
-PRODUCT_PACKAGES += \
+    dhcpcd.conf \
     WCNSS_qcom_wlan_factory_nv.bin
 
 PRODUCT_PROPERTY_OVERRIDES += \
