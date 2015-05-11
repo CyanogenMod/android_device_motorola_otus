@@ -166,3 +166,6 @@ persist.radio.relay_oprt_change=1
 
 # Property to disable hw keys which will enable on-screen virtual keys
 qemu.hw.mainkeys=0
+
+# Support FRP features (enable bootloader unlock etc.)
+ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
