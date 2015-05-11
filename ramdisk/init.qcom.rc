@@ -241,6 +241,10 @@ on post-fs-data
     start batt_health
 
 on early-boot
+    # Fix stupid 'add_tid_to_cgroup failed to write' errors
+    # This should really be done in init.rc on init
+    chmod 0660 /dev/cpuctl
+
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
     # Allow subsystem (modem etc) debugging
