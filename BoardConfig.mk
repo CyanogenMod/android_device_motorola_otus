@@ -187,7 +187,8 @@ BOARD_SEPOLICY_UNION += \
     rmt_storage.te \
     thermal-engine.te \
     ueventd.te \
-    vold.te
+    vold.te \
+    zygote.te
 
 MALLOC_IMPL := dlmalloc
 
