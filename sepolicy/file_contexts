@@ -37,21 +37,8 @@
 # PDS
 /pds(/.*)?                                                  u:object_r:pds_file:s0
 
-# Firmware
-/fsg/0.img.gz                                               u:object_r:otus_firmware:s0
-/fsg/otus_1.img.gz                                          u:object_r:otus_firmware:s0
-/fsg/otus_3.img.gz                                          u:object_r:otus_firmware:s0
-/fsg/otus_6.img.gz                                          u:object_r:otus_firmware:s0
-/fsg/otus_aio_1.img.gz                                      u:object_r:otus_firmware:s0
-/fsg/otus_att_1.img.gz                                      u:object_r:otus_firmware:s0
-/fsg/otus_cdma_3.img.gz                                     u:object_r:otus_firmware:s0
-/fsg/otus_retusa_aws_6.img.gz                               u:object_r:otus_firmware:s0
-/fsg/otus_retusa_glb_1.img.gz                               u:object_r:otus_firmware:s0
-/fsg/otus_sprint_3.img.gz                                   u:object_r:otus_firmware:s0
-/fsg/otus_tmo_6.img.gz                                      u:object_r:otus_firmware:s0
-/fsg/otus_trac_cdma_3.img.gz                                u:object_r:otus_firmware:s0
-/fsg/otus_usc_3.img.gz                                      u:object_r:otus_firmware:s0
-/fsg/otus_verizon_3.img.gz                                  u:object_r:otus_firmware:s0
+# FSG (regional modem config) blobs
+/fsg(/.*)?                                                  u:object_r:otus_firmware:s0
 
 # Sensors
 /dev/stml0xx                                                u:object_r:sensors_device:s0
