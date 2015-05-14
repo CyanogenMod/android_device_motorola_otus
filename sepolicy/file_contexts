@@ -57,7 +57,6 @@
 /dev/stml0xx                                                u:object_r:sensors_device:s0
 /dev/stml0xx_as                                             u:object_r:sensors_device:s0
 /dev/stml0xx_ms                                             u:object_r:sensors_device:s0
-/data/misc/akmd_set.txt                                     u:object_r:sensors_data_file:s0
 
 # Thermal
 /sys/devices/fd510000.gpio/gpio/gpio13/active_low           u:object_r:sysfs_thermal:s0
