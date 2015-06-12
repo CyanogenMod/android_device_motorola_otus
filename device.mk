@@ -190,6 +190,10 @@ PRODUCT_PACKAGES += \
     dhcpcd.conf \
     WCNSS_qcom_wlan_factory_nv.bin
 
+# Doze
+PRODUCT_PACKAGES += \
+    MotoDoze
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=240
 
