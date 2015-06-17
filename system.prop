@@ -39,7 +39,7 @@ media.stagefright.enable-qcp=true
 media.stagefright.enable-fma2dp=true
 media.stagefright.enable-scan=true
 mmp.enable.3g2=true
-media.aac_51_output_enabled=true
+media.aac_51_output_enabled=false
 #37491 is decimal sum of supported codecs in AAL
 #codecs: AVI AC3 ASF AAC QCP DTS 3G2 MP2TS
 mm.enable.qcom_parser=37491
@@ -125,13 +125,14 @@ tunnel.audio.encode = false
 #use VERY_HIGH_QUALITY for audio resampler
 af.resampler.quality=4
 
-#disable tunnel mode playback by default
-audio.offload.disable=1
+#enable audio offload
+audio.offload.disable=0
+
 av.streaming.offload.enable=false
 mm.enable.smoothstreaming=true
 
 #Buffer size in kbytes for compress offload playback
-audio.offload.buffer.size.kb=32
+audio.offload.buffer.size.kb=128
 
 #8x10 does not support tunnel av playback
 #this prop should be set to false all the time
