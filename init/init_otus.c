@@ -74,6 +74,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.mot.build.customerid", "reteuall");
         property_set("ro.telephony.default_network", "3");
         property_set("persist.radio.multisim.config", "dsds");
+        property_set("persist.radio.dont_use_dsd", "true");
+        property_set("persist.radio.plmn_name_cmp", "1");
     }
     property_get("ro.product.device", device);
     strlcpy(devicename, device, sizeof(devicename));
