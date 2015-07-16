@@ -15,3 +15,7 @@ allow init sysfs_battery_supply:file getattr;
 allow init sysfs_battery_supply:lnk_file read;
 allow init sysfs_mpdecision:file getattr;
 allow init thermal_device:chr_file write;
+
+# Allow init to format userdata & cache partitions
+allow init userdata_block_device:blk_file rw_file_perms;
+allow init cache_block_device:blk_file rw_file_perms;
