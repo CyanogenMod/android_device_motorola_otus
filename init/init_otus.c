@@ -53,7 +53,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     if (!rc || !ISMATCH(platform, ANDROID_TARGET))
         return;
 
-	property_set("ro.product.model", "Moto E");
+    property_set("ro.product.model", "Moto E");
     property_get("ro.boot.radio", radio);
     if (ISMATCH(radio, "0x1")) {
         /* xt1505 */
@@ -76,6 +76,16 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("persist.radio.multisim.config", "dsds");
         property_set("persist.radio.dont_use_dsd", "true");
         property_set("persist.radio.plmn_name_cmp", "1");
+    }
+    else if (ISMATCH(radio, "0x6")) {
+        /* xt1511 */
+        property_set("ro.product.device", "otus");
+        property_set("ro.build.product", "otus");
+        property_set("ro.build.description", "otus_retuaws-user 5.0.2 LXC22.99-12 10 release-keys");
+        property_set("ro.build.fingerprint", "motorola/otus_retuaws/otus:5.0.2/LXC22.99-12/10:user/release-keys");
+        property_set("ro.mot.build.customerid", "retusa_aws");
+        property_set("ro.telephony.default_network", "0");
+        property_set("persist.radio.multisim.config", "");
     }
     property_get("ro.product.device", device);
     strlcpy(devicename, device, sizeof(devicename));
