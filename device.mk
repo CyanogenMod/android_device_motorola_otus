@@ -227,7 +227,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.izat.premium_enabled=1 \
     ro.qc.sdk.izat.service_mask=0x5 \
     persist.gps.qc_nlp_in_use=1 \
-    persist.loc.nlp_name=com.qualcomm.services.location \
     ro.gps.agps_provider=1
 
 # Media
