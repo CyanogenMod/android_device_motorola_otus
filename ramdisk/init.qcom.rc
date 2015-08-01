@@ -386,15 +386,6 @@ on boot
     mkdir /data/nfc 0770 nfc nfc
     mkdir /data/nfc/param 0770 nfc nfc
 	
-    # AK9863 Magnetometer
-    chown compass compass /sys/class/compass/akm8963/enable_acc
-    chown compass compass /sys/class/compass/akm8963/enable_mag
-    chown compass compass /sys/class/compass/akm8963/enable_ori
-    chown compass compass /sys/class/compass/akm8963/delay_acc
-    chown compass compass /sys/class/compass/akm8963/delay_mag
-    chown compass compass /sys/class/compass/akm8963/delay_ori
-    chown compass compass /sys/class/compass/akm8963/accel
-
     # CT406 Light sensor and proximity
     chown system system /sys/module/ct406/parameters/als_enable
     chmod 0660 /sys/module/ct406/parameters/als_enable
@@ -534,6 +525,12 @@ service location_mq /system/bin/location-mq
     user gps
     group gps
     disabled
+
+service stml0xx /system/bin/stml0xx_wrapper.sh
+    class late_start
+    user compass
+    group compass misc input
+    oneshot
 
 service mmi-boot-sh /system/bin/sh /init.mmi.boot.sh
     class core
