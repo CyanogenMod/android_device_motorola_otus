@@ -124,12 +124,15 @@ PRODUCT_PACKAGES += \
 # OMX
 PRODUCT_PACKAGES += \
     libdashplayer \
+    libextmedia_jni \
     libOmxAacEnc \
     libOmxAmrEnc \
     libOmxCore \
     libOmxEvrcEnc \
     libOmxQcelp13Enc \
     libOmxVenc \
+    libOmxVidcCommon \
+    libqcmediaplayer \
     libstagefrighthw \
     qcmediaplayer
 
