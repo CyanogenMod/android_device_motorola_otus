@@ -40,7 +40,7 @@ static struct light_state_t g_battery;
 static int g_attention = 0;
 
 char const*const WHITE_LED_FILE
-        = "/sys/class/leds/white/brightness";
+        = "/sys/class/leds/rgb/brightness";
 
 char const*const LCD_FILE
         = "/sys/class/leds/lcd-backlight/brightness";
