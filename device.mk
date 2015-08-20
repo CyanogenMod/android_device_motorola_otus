@@ -107,10 +107,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     setup_fs
 
-# Qcom SoftAP & wifi
-PRODUCT_PACKAGES += \
-    libQWiFiSoftApCfg
-
 # Motorola
 PRODUCT_PACKAGES += \
     charge_only_mode
@@ -134,11 +130,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     qcmediaplayer
-
-PRODUCT_PACKAGES += \
-    wlan_module_symlink \
-    wlan_persist_symlink \
-    wcnss_service
 
 PRODUCT_PACKAGES += \
     librs_jni \
@@ -181,13 +172,16 @@ PRODUCT_PACKAGES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
-    hostapd.accept \
     hostapd_default.conf \
-    hostapd.deny \
     hostapd \
     wpa_supplicant \
     dhcpcd.conf \
-    WCNSS_qcom_wlan_factory_nv.bin
+    wpa_supplicant.conf \
+    wlan_module_symlink \
+    wlan_persist_symlink \
+    wcnss_service \
+    libQWiFiSoftApCfg \
+    libqsap_sdk
 
 # Doze
 PRODUCT_PACKAGES += \

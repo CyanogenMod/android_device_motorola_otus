@@ -131,7 +131,6 @@ lib/libpkip.so
 lib/libprovlib.so
 lib/libqmimotext.so
 lib/libqomx_core.so
-lib/libqsap_sdk.so
 lib/libsensorhubservice_jni.so
 lib/libslowmotionconverter.so
 lib/libslpc.so
