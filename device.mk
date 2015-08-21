@@ -173,8 +173,12 @@ PRODUCT_PACKAGES += \
 # Wifi
 PRODUCT_PACKAGES += \
     hostapd_default.conf \
+    hostapd.accept \
+    hostapd.deny \
     hostapd \
     wpa_supplicant \
+    wpa_supplicant_overlay.conf \
+    p2p_supplicant_overlay.conf \
     dhcpcd.conf \
     wpa_supplicant.conf \
     wlan_module_symlink \
