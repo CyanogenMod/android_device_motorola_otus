@@ -119,6 +119,7 @@ lib/libmotodisplayqd.so
 lib/libmoto_netutil.so
 lib/libmot_sensorlistener.so
 lib/libOmxVdecHevc.so
+lib/libOmxVdec.so
 lib/libpkip.so
 lib/libprovlib.so
 lib/libqmimotext.so
