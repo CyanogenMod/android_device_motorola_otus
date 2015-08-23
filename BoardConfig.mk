@@ -183,6 +183,7 @@ BOARD_SEPOLICY_UNION += \
     platform_app.te \
     property_contexts \
     property.te \
+    stml0xx.te \
     system_app.te \
     system_init.te \
     system_server.te \
