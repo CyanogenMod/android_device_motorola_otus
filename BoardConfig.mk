@@ -169,7 +169,6 @@ BOARD_SEPOLICY_DIRS += \
 BOARD_SEPOLICY_UNION += \
     atvc.te \
     batt_health.te \
-    bootanim.te \
     device.te \
     file.te \
     file_contexts \
