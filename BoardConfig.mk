@@ -152,7 +152,7 @@ TARGET_OTA_ASSERT_DEVICE := xt1505,xt1506,otus_umts,otus_umtsds,otus,otus_ds
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm
-TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_otus.c
+TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_otus.cpp
 TARGET_UNIFIED_DEVICE := true
 
 # Recovery
