@@ -94,14 +94,8 @@
 #define AID_NET_BW_STATS  3006  /* read bandwidth statistics */
 #define AID_NET_BW_ACCT   3007  /* change bandwidth statistics accounting */
 #define AID_NET_BT_STACK  3008  /* bluetooth: access config files */
-#if defined(QCOM_LEGACY_UIDS)
-#define AID_QCOM_ONCRPC   3009  /* can read/write /dev/oncrpc files */
-#define AID_QCOM_DIAG     3010  /* can read/write /dev/diag */
-#else 
 #define AID_QCOM_DIAG     3009  /* can read/write /dev/diag */
-#define AID_IMS           3010 /* can read/write /dev/socket/imsrtp */
-#define AID_SENSORS       3011 /* access to /dev/socket/sensor_ctl_socket & QCCI/QCSI */
-#endif
+#define AID_SENSORS       3011  /* access to /dev/socket/sensor_ctl_socket & QCCI/QCSI */
 
 /* Motorola IDs */
 #define AID_MOT_ACCY      9000  /* access to accessory */
@@ -188,9 +182,6 @@ static const struct android_id_info android_ids[] = {
     { "sdcard_r",      AID_SDCARD_R, },
     { "clat",          AID_CLAT, },
     { "loop_radio",    AID_LOOP_RADIO, },
-#if defined(QCOM_LEGACY_UIDS)
-    { "qcom_oncrpc",   AID_QCOM_ONCRPC, },
-#endif
     { "mediadrm",      AID_MEDIA_DRM, },
     { "package_info",  AID_PACKAGE_INFO, },
     { "sdcard_pics",   AID_SDCARD_PICS, },
@@ -204,6 +195,7 @@ static const struct android_id_info android_ids[] = {
     { "shell",         AID_SHELL, },
     { "cache",         AID_CACHE, },
     { "diag",          AID_DIAG, },
+    { "qcom_diag",     AID_QCOM_DIAG, },
 
     { "net_bt_admin",  AID_NET_BT_ADMIN, },
     { "net_bt",        AID_NET_BT, },
@@ -211,29 +203,23 @@ static const struct android_id_info android_ids[] = {
     { "net_raw",       AID_NET_RAW, },
     { "net_admin",     AID_NET_ADMIN, },
     { "net_bw_stats",  AID_NET_BW_STATS, },
-    { "qcom_diag", AID_QCOM_DIAG, },
-#if !defined(QCOM_LEGACY_UIDS)
-    { "ims", AID_IMS, },
-#endif
     { "net_bw_acct",   AID_NET_BW_ACCT, },
     { "net_bt_stack",  AID_NET_BT_STACK, },
-    { "qcom_diag", AID_QCOM_DIAG, },
-#if !defined(QCOM_LEGACY_UIDS)
     { "sensors",       AID_SENSORS, },
-#endif
+
     /* Motorola IDs */
-    { "mot_accy",  AID_MOT_ACCY, },
-    { "mot_pwric", AID_MOT_PWRIC, },
-    { "mot_usb",   AID_MOT_USB, },
-    { "mot_drm",   AID_MOT_DRM, },
-    { "mot_tcmd",  AID_MOT_TCMD, },
+    { "mot_accy",      AID_MOT_ACCY, },
+    { "mot_pwric",     AID_MOT_PWRIC, },
+    { "mot_usb",       AID_MOT_USB, },
+    { "mot_drm",       AID_MOT_DRM, },
+    { "mot_tcmd",      AID_MOT_TCMD, },
     { "mot_sec_rtc",   AID_MOT_SEC_RTC, },
     { "mot_tombstone", AID_MOT_TOMBSTONE, },
     { "mot_tpapi",     AID_MOT_TPAPI, },
     { "mot_secclkd",   AID_MOT_SECCLKD, },
     { "mot_whisper",   AID_MOT_WHISPER, },
-    { "mot_caif",  AID_MOT_CAIF, },
-    { "mot_dlna",  AID_MOT_DLNA, },
+    { "mot_caif",      AID_MOT_CAIF, },
+    { "mot_dlna",      AID_MOT_DLNA, },
     { "mot_atvc",      AID_MOT_ATVC, },
     { "sprint_extension", AID_SPRINT_EXTENSION, },
     { "mot_dbvc",      AID_MOT_DBVC, },
