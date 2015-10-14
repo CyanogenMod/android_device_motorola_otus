@@ -87,6 +87,10 @@ PRODUCT_PACKAGES += \
 # Keystore
 PRODUCT_PACKAGES += keystore.msm8610
 
+# Motorola
+PRODUCT_PACKAGES += \
+    libmoto
+
 PRODUCT_PACKAGES += \
     audiod \
     audio.primary.msm8610 \
