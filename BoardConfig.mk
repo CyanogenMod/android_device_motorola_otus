@@ -115,9 +115,6 @@ TARGET_QCOM_MEDIA_VARIANT := caf
 # Motorola
 TARGET_USES_MOTOROLA_LOG := true
 
-# Encryption
-TARGET_HW_DISK_ENCRYPTION := true
-
 # Hardware tunables framework
 BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw/
 
