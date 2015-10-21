@@ -114,9 +114,6 @@ BOARD_USES_QC_TIME_SERVICES := true
 TARGET_QCOM_MEDIA_VARIANT := caf
 TARGET_RIL_VARIANT := caf
 
-# Encryption
-TARGET_HW_DISK_ENCRYPTION := true
-
 # Hardware tunables framework
 BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw/
 
