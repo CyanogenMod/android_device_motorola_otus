@@ -58,6 +58,11 @@ touch_path=/sys/devices/${touch_driver_link#*devices/}
 panel_path=/sys/devices/virtual/graphics/fb0
 debug "sysfs touch path: $touch_path"
 
+# Set permissions to enable factory touch tests
+chown root:mot_tcmd $touch_path/drv_irq
+chown root:mot_tcmd $touch_path/hw_irqstat
+chown root:mot_tcmd $touch_path/reset
+
 [ -f $touch_path/doreflash ] || error_and_leave 5
 [ -f $touch_path/poweron ] || error_and_leave 5
 
@@ -145,9 +150,6 @@ then
 	error_and_leave 3
 fi
 debug "touch product id: $touch_product_id"
-
-touch_product_id=${touch_product_id%[a-z]}
-debug "touch product id without vendor suffix: $touch_product_id"
 
 read_touch_property buildid || error_and_leave 1
 str_cfg_id_boot=${property#*-}
@@ -245,13 +247,6 @@ then
 	notice "Touch firmware config id at boot time $str_cfg_id_boot"
 	notice "Touch firmware config id in the file $str_cfg_id_latest"
 	notice "Touch firmware config id currently programmed $str_cfg_id_new"
-
-	if [ "$(getprop ro.build.motfactory)" == "1" ];
-	then
-		echo "Factory build detected! Resetting device after touch firmware upgrade..."
-		sleep 1
-		reboot
-	fi
 else
 	notice "Touch firmware is up to date"
 fi
