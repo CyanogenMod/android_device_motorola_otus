@@ -169,6 +169,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     gps.msm8610
 
+# Stlport
+PRODUCT_PACKAGES += \
+    libstlport
+
 # CRDA
 PRODUCT_PACKAGES += \
     crda \
