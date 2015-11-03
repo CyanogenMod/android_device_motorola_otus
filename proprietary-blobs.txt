@@ -100,7 +100,6 @@ lib/libmotocalibration.so
 lib/libmoto_netutil.so
 lib/libmot_sensorlistener.so
 lib/libOmxVdecHevc.so
-lib/libOmxVdec.so
 lib/libpkip.so
 lib/libqmimotext.so
 lib/libqomx_core.so
