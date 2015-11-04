@@ -12,3 +12,9 @@ type vibeamp_sysfs, fs_type, sysfs_type;
 # fsg
 type otus_firmware, file_type;
 type fsg_file, fs_type, contextmount_type;
+
+# Power
+type sysfs_power, sysfs_type;
+
+# Light
+type sysfs_light, sysfs_type;

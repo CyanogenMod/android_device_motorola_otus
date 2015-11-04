@@ -1,6 +1,5 @@
 allow init app_data_file:dir setattr;
 allow init logs_block_device:blk_file setattr;
-
 allow init qmuxd:unix_stream_socket connectto;
 allow init qmuxd_socket:sock_file write;
 allow init self:socket create_socket_perms;
@@ -10,6 +9,7 @@ allow init sysfs_battery_supply:file getattr;
 allow init sysfs_battery_supply:lnk_file read;
 allow init sysfs_mpdecision:file getattr;
 allow init thermal_device:chr_file write;
+allow init sysfs_power:file setattr;
 
 # Allow init to format userdata & cache partitions
 allow init userdata_block_device:blk_file rw_file_perms;
