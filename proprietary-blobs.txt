@@ -1,3 +1,4 @@
+# From otus stock ROM
 bin/adsprpcd
 bin/ap_gain.bin
 bin/ap_gain_mmul.bin
@@ -84,7 +85,6 @@ lib/libadropbox.so
 lib/libbluedroid.so
 lib/libcnefeatureconfig.so
 lib/libdmengine.so
-lib/libdrmdecrypt.so
 lib/libexternal.so
 lib/libfilterpack_facedetect.so
 lib/libGLESv3.so
@@ -109,12 +109,6 @@ lib/libstm-log.so
 lib/libtpa_core.so
 lib/libtpa.so
 lib/soundfx/libmmieffectswrapper.so
-vendor/lib/drm/libdrmwvmplugin.so
-vendor/lib/egl/eglsubAndroid.so
-vendor/lib/egl/libEGL_adreno.so
-vendor/lib/egl/libGLESv1_CM_adreno.so
-vendor/lib/egl/libGLESv2_adreno.so
-vendor/lib/egl/libq3dtools_adreno.so
 vendor/lib/hw/flp.default.so
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbmapper.so
@@ -126,10 +120,7 @@ vendor/lib/libaudcal.so
 vendor/lib/libaudioalsa.so
 vendor/lib/libbccQTI.so
 vendor/lib/libbtnv.so
-vendor/lib/libC2D2.so
-vendor/lib/libc2d30-a3xx.so
 vendor/lib/libc2d30-a4xx.so
-vendor/lib/libCB.so
 vendor/lib/libchromatix_s5k5e2_common.so
 vendor/lib/libchromatix_s5k5e2_default_video.so
 vendor/lib/libchromatix_s5k5e2_hfr_60fps.so
@@ -151,7 +142,6 @@ vendor/lib/libdsutils.so
 vendor/lib/libExtendedExtractor.so
 vendor/lib/libfastcvopt.so
 vendor/lib/libgeofence.so
-vendor/lib/libgsl.so
 vendor/lib/libI420colorconvert.so
 vendor/lib/libidl.so
 vendor/lib/libimage-jpeg-enc-omx-comp.so
@@ -160,7 +150,6 @@ vendor/lib/libizat_core.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegehw.so
 vendor/lib/liblbs_core.so
-vendor/lib/libllvm-qcom.so
 vendor/lib/liblocationservice.so
 vendor/lib/libloc_ext.so
 vendor/lib/liblowi_client.so
@@ -205,7 +194,6 @@ vendor/lib/libOmxIttiamVdec.so
 vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxWmaDec.so
 vendor/lib/libOpenCL.so
-vendor/lib/libprdrmdecrypt.so
 vendor/lib/libqcci_legacy.so
 vendor/lib/libqc-opt.so
 vendor/lib/libqdi.so
@@ -226,11 +214,7 @@ vendor/lib/libquipc_ulp_adapter.so
 vendor/lib/libril-qc-qmi-1.so
 vendor/lib/libril-qcril-hook-oem.so
 vendor/lib/librpmb.so
-vendor/lib/librs_adreno_sha1.so
-vendor/lib/librs_adreno.so
-vendor/lib/libRSDriver_adreno.so
 vendor/lib/libsc-a2xx.so
-vendor/lib/libsc-a3xx.so
 vendor/lib/libscale.so
 vendor/lib/libsmemlog.so
 vendor/lib/libssd.so
@@ -242,17 +226,39 @@ vendor/lib/libtime_genoff.so
 vendor/lib/libtzplayready.so
 vendor/lib/libulp2.so
 vendor/lib/libwifiscanner.so
-vendor/lib/libwvdrm_L3.so
-vendor/lib/libwvm.so
-vendor/lib/libWVStreamControlAPI_L3.so
 vendor/lib/libxml.so
 vendor/lib/libxtadapter.so
 vendor/lib/libxt_native.so
 vendor/lib/libxtwifi_ulp_adaptor.so
 vendor/lib/libxtwifi_zpp_adaptor.so
-vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib/rfsa/adsp/libadsp_denoise_skel.so
 vendor/lib/rfsa/adsp/libadsp_jpege_skel.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
+
+# Adreno from hammerhead MRA58K
+vendor/lib/egl/eglsubAndroid.so
+vendor/lib/egl/libEGL_adreno.so
+vendor/lib/egl/libGLESv1_CM_adreno.so
+vendor/lib/egl/libGLESv2_adreno.so
+vendor/lib/egl/libq3dtools_adreno.so
+vendor/lib/libCB.so
+vendor/lib/libc2d30.so
+vendor/lib/libC2D2.so
+vendor/lib/libc2d30-a3xx.so
+vendor/lib/libgsl.so
+vendor/lib/libllvm-qcom.so
+vendor/lib/librs_adreno_sha1.so
+vendor/lib/librs_adreno.so
+vendor/lib/libsc-a3xx.so
+vendor/lib/libRSDriver_adreno.so
+
+# Widevine from hammerhead MRA58K
+lib/libdrmdecrypt.so
+vendor/lib/libwvdrm_L1.so
+vendor/lib/libwvm.so
+vendor/lib/libWVphoneAPI.so
+vendor/lib/libWVStreamControlAPI_L1.so
+vendor/lib/drm/libdrmwvmplugin.so
+vendor/lib/mediadrm/libwvdrmengine.so

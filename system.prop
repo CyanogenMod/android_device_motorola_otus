@@ -52,11 +52,6 @@ vidc.debug.level=1
 camera2.portability.force_api=1
 
 #
-# system props for widevine
-#
-persist.gralloc.cp.level3=1
-
-#
 # system props for the data modules
 #
 ro.use_data_netmgrd=true
