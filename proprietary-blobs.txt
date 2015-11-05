@@ -75,9 +75,6 @@ etc/thermal-engine-otus.conf
 etc/xtra_root_cert.pem
 etc/xtwifi.conf
 lib/hw/camera.msm8610.so
-lib/hw/gps.default.so
-lib/hw/keystore.qcom.so
-lib/hw/power.msm8610.so
 lib/hw/sensorhub.msm8610.so
 lib/hw/sensors.msm8610.so
 lib/libactions_irservice_stm.so
