@@ -112,7 +112,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     camera.msm8610 \
     libmm-qcamera \
-    libboringssl-compat
+    libboringssl-compat \
+    libshim_qcopt
 
 # Filesystem
 PRODUCT_PACKAGES += \
