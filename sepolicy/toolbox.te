@@ -1,0 +1,6 @@
+allow toolbox hob_block_device:blk_file { getattr setattr };
+allow toolbox utags_block_device:blk_file { getattr setattr };
+allow toolbox clogo_block_device:blk_file { getattr setattr };
+allow toolbox cid_block_device:blk_file { getattr setattr };
+allow toolbox logs_block_device:blk_file { getattr setattr };
+allow toolbox self:capability chown;
