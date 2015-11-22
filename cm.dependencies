@@ -10,9 +10,5 @@
   {
     "repository": "android_kernel_motorola_otus",
     "target_path": "kernel/motorola/otus"
-  },
-  {
-    "repository": "android_external_stlport",
-    "target_path": "external/stlport"
   }
 ]
