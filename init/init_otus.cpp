@@ -76,6 +76,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("persist.radio.multisim.config", "dsds");
         property_set("persist.radio.dont_use_dsd", "true");
         property_set("persist.radio.plmn_name_cmp", "1");
+        property_set("ro.telephony.ril.config", "simactivation");
     }
     else if (ISMATCH(radio, "0x6")) {
         /* xt1511 */
