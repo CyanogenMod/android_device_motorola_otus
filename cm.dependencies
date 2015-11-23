@@ -8,10 +8,6 @@
     "target_path": "external/sony/boringssl-compat"
   },
   {
-    "repository": "android_hardware_qcom_fm",
-    "target_path": "hardware/qcom/fm"
-  },
-  {
     "repository": "android_kernel_motorola_otus",
     "target_path": "kernel/motorola/otus"
   },

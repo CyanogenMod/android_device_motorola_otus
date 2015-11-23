@@ -8,8 +8,6 @@ bin/btnvtool
 bin/dbvc_atvc_property_set
 bin/dropboxd
 bin/dropboxhelper
-bin/fmconfig
-bin/fm_qsoc_patches
 bin/gpsone_daemon
 bin/hardware_revisions.sh
 bin/hci_qcomm_init
