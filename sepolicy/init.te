@@ -1,6 +1,5 @@
 allow init app_data_file:dir setattr;
 allow init logs_block_device:blk_file setattr;
-allow init utags_block_device:blk_file setattr;
 
 allow init qmuxd:unix_stream_socket connectto;
 allow init qmuxd_socket:sock_file write;
