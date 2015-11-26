@@ -158,9 +158,6 @@ audio.offload.gapless.enabled=true
 persist.sys.ssr.restart_level=3
 persist.sys.qc.sub.rdump.on=0
 
-# For TCMD debug level
-persist.tcmd.log.limit=0
-
 # Disable QCOM net early sockets feature
 net.early.sockets=0
 

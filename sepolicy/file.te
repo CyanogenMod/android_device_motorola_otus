@@ -9,9 +9,6 @@ type hw_revs_data_file, file_type, data_file_type;
 type display_sysfs, fs_type, sysfs_type;
 type vibeamp_sysfs, fs_type, sysfs_type;
 
-# PDS
-type pds_file, file_type;
-
 # fsg
 type otus_firmware, file_type;
 type fsg_file, fs_type, contextmount_type;
