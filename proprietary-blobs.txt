@@ -111,13 +111,11 @@ vendor/lib/libcneqmiutils.so
 vendor/lib/libcneutils.so
 vendor/lib/libconfigdb.so
 vendor/lib/libdiag.so
-vendor/lib/libDivxDrm.so
 vendor/lib/libdrmdiag.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/libdsi_netctrl.so
 vendor/lib/libdsutils.so
-vendor/lib/libExtendedExtractor.so
 vendor/lib/libfastcvopt.so
 vendor/lib/libgeofence.so
 vendor/lib/libI420colorconvert.so
@@ -157,8 +155,6 @@ vendor/lib/libmm-color-convertor.so
 vendor/lib/libmm-hdcpmgr.so
 vendor/lib/libmmipl.so
 vendor/lib/libmmjpeg.so
-vendor/lib/libmmosal.so
-vendor/lib/libmmparser.so
 vendor/lib/libmmqjpeg_codec.so
 vendor/lib/libmmQSM.so
 vendor/lib/libmmrtpdecoder.so
