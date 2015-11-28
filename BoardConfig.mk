@@ -43,6 +43,9 @@ TARGET_NO_BOOTLOADER := true
 TARGET_USE_VENDOR_CAMERA_EXT := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 
+# Charger
+BOARD_CHARGING_MODE_BOOTING_LPM := /sys/mmi_lpm/lpm_mode
+
 # Kernel
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
