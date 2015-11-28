@@ -56,8 +56,7 @@ on init
     chown root qcom_diag /sys/kernel/dropbox/data
 
     # Symbols required for motorola blobs
-    export LD_PRELOAD "libboringssl-compat.so"
-    export LD_SHIM_LIBS "/system/lib/liblog.so|libmoto.so"
+    export LD_SHIM_LIBS "/system/lib/liblog.so|libmoto.so /system/lib/libcrypto.so|libboringssl-compat.so"
 
 on fs
     mount_all fstab.qcom
