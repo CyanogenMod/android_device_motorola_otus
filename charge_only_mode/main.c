@@ -43,9 +43,13 @@ static int launched = 0;
 static int shutdown = 0;
 static int powerup = 0;
 
+// hidden reboot syscall definition
+int __reboot(int magic, int magic2, int cmd, void *arg);
+
 void power_event(int update_leds);
 
-#define ANIMATION_TIMEOUT (1000 / 2)
+#define ANIMATION_START_DELAY (50)
+#define ANIMATION_TIMEOUT (400)
 #define POWERUP_VOLTAGE 3600000
 
 #define FS_PATH "/data/chargeonlymode"
@@ -93,8 +97,8 @@ void screen_brightness_animation_alarm2(void *_)
 
 void screen_brightness_animation_alarm1(void *_)
 {
-	set_brightness(0.4);
-	/* Bright for 10s */
+	/* low brightness for 10 seconds */
+	set_brightness(0.15);
 	alarm_set_relative(screen_brightness_animation_alarm2, NULL, 10000);
 }
 
@@ -102,7 +106,8 @@ void screen_brightness_animation_start(int animation_timeout)
 {
         display_unblank();
 
-	set_brightness(0.8);
+	/* high brightness for 5 seconds */
+	set_brightness(0.7);
 	alarm_set_relative(screen_brightness_animation_alarm1, NULL, 5000);
 	alarm_set_relative(animation_alarm, NULL, animation_timeout);
 }
@@ -121,7 +126,8 @@ void power_key_alarm(void *_)
 	}
 	/* Set powerup reason outof-charge-only to MBM. */
 	clear_mode(FS_PATH);
-	int ret = __reboot(LINUX_REBOOT_MAGIC1, LINUX_REBOOT_MAGIC2, LINUX_REBOOT_CMD_RESTART2, "outofcharge");
+	int ret = __reboot(LINUX_REBOOT_MAGIC1, LINUX_REBOOT_MAGIC2,
+		LINUX_REBOOT_CMD_RESTART2, "outofcharge");
 	ALOGD("reboot to outofcharge!\n");
 	if(ret < 0) {
 		ALOGD("reboot fail!\n");
@@ -189,7 +195,7 @@ void update_screen_on_wakeup_key(void)
 		/* This handles shutdown properly */
 		screen_brightness_animation_alarm2(NULL);
 	else
-		screen_brightness_animation_start(ANIMATION_TIMEOUT);
+		screen_brightness_animation_start(ANIMATION_START_DELAY);
 }
 
 void update_screen_on_wakeup_key2(void)
@@ -197,7 +203,7 @@ void update_screen_on_wakeup_key2(void)
 	alarm_cancel(screen_brightness_animation_alarm2);
 	alarm_cancel(screen_brightness_animation_alarm1);
 	alarm_cancel(animation_alarm);
-	screen_brightness_animation_start(ANIMATION_TIMEOUT);
+	screen_brightness_animation_start(ANIMATION_START_DELAY);
 }
 
 // Determine whether or not to launch the Memory Test backdoor.
@@ -256,7 +262,6 @@ int main()
 
 	/* To clean FB to avoid old data impact the COM images display*/
         display_blank();
-        display_unblank();
 
 	/* Set initialize image, screen brightness */
 	screen_brightness_animation_start(1500);
