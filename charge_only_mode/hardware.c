@@ -63,7 +63,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define LED_ON_THRESHOLD 90
 
 static int ac_online = 0;
-static int max_brightness = 0;
 
 static int sys_get_int_parameter(const char *path, int missing_value)
 {
@@ -253,33 +252,9 @@ void set_brightness(float percent)
 	char b[20];
 
         ALOGD("set_brightness: %f\n", percent);
-	fd = open("/sys/class/backlight/lcd-backlight/brightness", O_RDWR);
-	max_brightness = sys_get_int_parameter("/sys/class/backlight/lcd-backlight/max_brightness", 0);
-	if (fd < 0) {
-		fd = open("/sys/class/backlight/lm3532_bl/brightness", O_RDWR);
-		max_brightness = sys_get_int_parameter("/sys/class/backlight/lm3532_bl/max_brightness", 0);
-		if (fd < 0) {
-			fd = open("/sys/class/leds/lcd-backlight/brightness", O_RDWR);
-			max_brightness = sys_get_int_parameter("/sys/class/leds/lcd-backlight/max_brightness", 0);
-			if (fd < 0)
-			return;
-		}
-	}
-	n = sprintf(b, "%d\n", (int)(max_brightness*percent));
-	write(fd, b, n);
-	close(fd);
-}
-
-void set_button_brightness(float percent)
-{
-	int fd, n;
-	char b[20];
-
-        ALOGD("set_button_brightness: %f\n", percent);
-	fd = open("/sys/class/leds/button-backlight/brightness", O_RDWR);
-	if (fd < 0)
-		return;
-	n = sprintf(b, "%d\n", (int)(126*percent));
+	fd = open("/sys/class/leds/lcd-backlight/brightness", O_RDWR);
+	if (fd < 0) return;
+	n = sprintf(b, "%d\n", (int)(255*percent));
 	write(fd, b, n);
 	close(fd);
 }

@@ -259,7 +259,6 @@ int main()
         display_unblank();
 
 	/* Set initialize image, screen brightness */
-	set_button_brightness(0);
 	screen_brightness_animation_start(1500);
 
 	while (!quit) {
