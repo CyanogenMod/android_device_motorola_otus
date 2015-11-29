@@ -328,8 +328,8 @@ void draw(int w, int h, unsigned short *color_channel, int percent, int error)
 
 	memset(color_channel, 0, fb_size);
 	blit(color_channel, &battery_charge_background,
-				(fb_width - battery_charge_background.w) / 2,
-				(fb_height- battery_charge_background.h) / 2);
+			(fb_width - battery_charge_background.w) / 2,
+			(fb_height- battery_charge_background.h) / 2);
 
 	/* Fill it up! */
 	if (!error) {
