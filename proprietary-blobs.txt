@@ -81,6 +81,7 @@ vendor/lib/libmmcamera_tintless_bg_pca_algo.so
 vendor/lib/libmmcamera_tuning.so
 vendor/lib/libmmcamera_wavelet_lib.so
 vendor/lib/libmm-color-convertor.so
+vendor/lib/libqc-opt.so
 vendor/lib/libthermalclient.so
 vendor/lib/libthermalioctl.so
 vendor/lib/soundfx/libqcbassboost.so
@@ -186,7 +187,6 @@ vendor/lib/libOmxWmaDec.so
 vendor/lib/libOpenCL.so
 vendor/lib/libprdrmdecrypt.so
 vendor/lib/libqcci_legacy.so
-vendor/lib/libqc-opt.so
 vendor/lib/libqdi.so
 vendor/lib/libqdp.so
 vendor/lib/libqmi_cci.so
