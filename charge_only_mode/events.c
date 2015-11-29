@@ -54,7 +54,7 @@ static enum { EV_TYPE_UNKNOWN, EV_TYPE_KEYBOARD, EV_TYPE_UEVENT } ev_type[MAX_DE
 
 #define EV_KEY_VALUE_DOWN 0x01
 #define EV_KEY_VALUE_UP 0x00
-#define CHARGER_DRIVER "pm8921-charger"
+#define CHARGER_DRIVER "power_supply"
 
 struct uevent {
     const char *action;
