@@ -38,6 +38,10 @@ PRODUCT_COPY_FILES += \
 DEVICE_PACKAGE_OVERLAYS := \
     $(LOCAL_PATH)/overlay
 
+# Support FRP features (enable bootloader unlock etc.)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
+
 # Prima(pronto firmware)
 PRODUCT_COPY_FILES += \
     kernel/motorola/otus/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
