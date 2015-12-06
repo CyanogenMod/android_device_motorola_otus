@@ -28,5 +28,3 @@ PRODUCT_DEVICE := otus
 PRODUCT_BRAND := motorola
 PRODUCT_MODEL := otus
 PRODUCT_MANUFACTURER := motorola
-
-$(call inherit-product-if-exists, vendor/motorola/otus/otus-vendor.mk)

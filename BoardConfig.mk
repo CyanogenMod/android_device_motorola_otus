@@ -14,8 +14,6 @@
 # limitations under the License.
 #
 
--include vendor/motorola/otus/BoardConfigVendor.mk
-
 # inherit from common msm8610-common
 -include device/motorola/msm8610-common/BoardConfigCommon.mk
 
