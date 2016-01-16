@@ -45,10 +45,5 @@ DEVICE_PACKAGE_OVERLAYS := \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
 
-# Prima(pronto firmware)
-PRODUCT_COPY_FILES += \
-    kernel/motorola/otus/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
-    kernel/motorola/otus/drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
-
 # Inherit from msm8610-common
 $(call inherit-product, device/motorola/msm8610-common/msm8610.mk)
