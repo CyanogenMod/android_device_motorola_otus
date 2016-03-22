@@ -1,3 +1,7 @@
+on init
+    # Symbols required for motorola blobs
+    export LD_SHIM_LIBS "/system/lib/liblog.so|libmoto.so /system/lib/libcrypto.so|libboringssl-compat.so /system/vendor/lib/libqc-opt.so|libshim_qcopt.so"
+
 service stml0xx /system/bin/stml0xx_wrapper.sh
     class late_start
     user compass
