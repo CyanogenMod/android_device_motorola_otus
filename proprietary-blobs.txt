@@ -43,7 +43,6 @@ lib/libSTML0Updater.so
 lib/libmm-qcamera.so
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
-lib/libmot_sensorlistener.so
 lib/libspeakerbundle.so
 lib/soundfx/libmmieffectswrapper.so
 vendor/lib/libacdbloader.so
