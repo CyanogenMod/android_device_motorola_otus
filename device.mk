@@ -41,3 +41,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Inherit from msm8610-common
 $(call inherit-product, device/motorola/msm8610-common/msm8610.mk)
+
+# CMActions
+PRODUCT_PACKAGES += \
+    CMActions
