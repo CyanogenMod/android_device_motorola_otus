@@ -37,7 +37,8 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/ramdisk/fstab.qcom
 TARGET_OTA_ASSERT_DEVICE := xt1505,xt1506,otus_umts,otus_umtsds,otus,otus_ds
 
 # Init
-TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_otus.cpp
+TARGET_INIT_VENDOR_LIB := libinit_otus
+TARGET_RECOVERY_DEVICE_MODULES := libinit_otus
 
 BOARD_SEPOLICY_DIRS += \
-    device/motorola/otus/sepolicy
+    $(LOCAL_PATH)/sepolicy
