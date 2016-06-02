@@ -390,7 +390,7 @@
 
 	<path name="speaker-mic">
 		<path name="adc1" />
-		<ctl name="ADC1 Volume" value="14" />
+		<ctl name="ADC1 Volume" value="17" />
 		<ctl name="ADC2 Volume" value="0" />
 		<ctl name="ADC3 Volume" value="0" />
 	</path>
@@ -404,7 +404,7 @@
 
 	<path name="handset-mic">
 		<path name="adc1" />
-		<ctl name="ADC1 Volume" value="14" />
+		<ctl name="ADC1 Volume" value="17" />
 		<ctl name="ADC2 Volume" value="0" />
 		<ctl name="ADC3 Volume" value="0" />
 	</path>
@@ -427,7 +427,7 @@
 
 	<path name="primary-mic">
 		<path name="adc1" />
-		<ctl name="ADC1 Volume" value="14" />
+		<ctl name="ADC1 Volume" value="17" />
 		<ctl name="ADC2 Volume" value="0" />
 		<ctl name="ADC3 Volume" value="0" />
 	</path>
@@ -437,7 +437,7 @@
 		<ctl name="ADC2 MUX" value="INP3" />
 		<ctl name="ADC1 Volume" value="0" />
 		<ctl name="ADC2 Volume" value="0" />
-		<ctl name="ADC3 Volume" value="14" />
+		<ctl name="ADC3 Volume" value="16" />
 	</path>
 
 	<path name="tertiary-mic">
