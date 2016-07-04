@@ -18,6 +18,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Gesture shortcuts -->
   <string name="screen_gestures_panel_title">Gester</string>
+  <string name="ambient_display_title">Skärm med omgivningsljus</string>
   <string name="pick_up_gesture_title">Plocka upp</string>
   <string name="actions_title">Åtgärder</string>
 </resources>
