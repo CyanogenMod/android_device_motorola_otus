@@ -35,22 +35,20 @@
 #include "log.h"
 #include "util.h"
 
-#define ISMATCH(a,b)    (!strncmp(a,b,PROP_VALUE_MAX))
-
 void vendor_load_properties()
 {
-    char platform[PROP_VALUE_MAX];
-    char radio[PROP_VALUE_MAX];
-    char device[PROP_VALUE_MAX];
+    std::string platform;
+    std::string radio;
+    std::string device;
     int rc;
 
-    rc = property_get("ro.board.platform", platform);
-    if (!rc || !ISMATCH(platform, ANDROID_TARGET))
+    platform = property_get("ro.board.platform");
+    if (platform != ANDROID_TARGET)
         return;
 
     property_set("ro.product.model", "Moto E");
-    property_get("ro.boot.radio", radio);
-    if (ISMATCH(radio, "0x1")) {
+    radio = property_get("ro.boot.radio");
+    if (radio == "0x1") {
         /* xt1505 */
         property_set("ro.product.device", "otus");
         property_set("ro.build.product", "otus");
@@ -60,7 +58,7 @@ void vendor_load_properties()
         property_set("ro.telephony.default_network", "0");
         property_set("persist.radio.multisim.config", "");
     }
-    else if (ISMATCH(radio, "0x5")) {
+    else if (radio == "0x5") {
         /* xt1506 */
         property_set("ro.product.device", "otus_ds");
         property_set("ro.build.product", "otus_ds");
@@ -73,7 +71,7 @@ void vendor_load_properties()
         property_set("persist.radio.plmn_name_cmp", "1");
         property_set("ro.telephony.ril.config", "simactivation,sim2gsmonly");
     }
-    else if (ISMATCH(radio, "0x6")) {
+    else if (radio == "0x6") {
         /* xt1511 */
         property_set("ro.product.device", "otus");
         property_set("ro.build.product", "otus");
@@ -83,6 +81,6 @@ void vendor_load_properties()
         property_set("ro.telephony.default_network", "0");
         property_set("persist.radio.multisim.config", "");
     }
-    property_get("ro.product.device", device);
+    device = property_get("ro.product.device");
     INFO("Found radio id: %s setting build properties for %s device\n", radio, device);
 }
