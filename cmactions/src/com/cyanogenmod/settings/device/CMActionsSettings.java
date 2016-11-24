@@ -29,7 +29,7 @@ public class CMActionsSettings {
 
     private static final String GESTURE_CAMERA_ACTION_KEY = "gesture_camera_action";
     private static final String GESTURE_PICK_UP_KEY = "gesture_pick_up";
-    private static final String GESTURE_IR_WAKEUP_KEY = "gesture_ir_wake_up";
+    private static final String GESTURE_IR_WAKEUP_KEY = "gesture_hand_wave";
     private static final String GESTURE_IR_SILENCER_KEY = "gesture_ir_silencer";
 
 

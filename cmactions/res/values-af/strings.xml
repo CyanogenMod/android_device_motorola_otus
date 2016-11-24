@@ -16,13 +16,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Gesture shortcuts -->
-  <string name="screen_gestures_panel_title">Gebare</string>
-  <string name="ambient_display_title">Omgewings temperatuur skerm</string>
-  <string name="pick_up_gesture_title">Optel</string>
-  <string name="pick_up_gesture_summary">Pols kennisgewings met optel van toestel</string>
-  <string name="ir_wake_up_title">Waai</string>
-  <string name="ir_wake_up_summary">Pols kennisgewings wanneer jou hand waai bo-oor die skerm</string>
   <string name="actions_title">Aksies</string>
   <string name="camera_gesture_title">Dubbel-draai</string>
   <string name="camera_gesture_summary">Maak kamera oop wanneer die dubbel-draai gebaar gedoen word</string>

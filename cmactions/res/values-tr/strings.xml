@@ -16,13 +16,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Gesture shortcuts -->
-  <string name="screen_gestures_panel_title">Hareketler</string>
-  <string name="ambient_display_title">Bildirim ekranı</string>
-  <string name="pick_up_gesture_title">Al</string>
-  <string name="pick_up_gesture_summary">Telefon ele alındığında bildirimleri göster</string>
-  <string name="ir_wake_up_title">Salla</string>
-  <string name="ir_wake_up_summary">Elini ekran üzerinde sallayınca bildirimleri göster</string>
   <string name="actions_title">Eylemler</string>
   <string name="camera_gesture_title">Çift sallama</string>
   <string name="camera_gesture_summary">Çift sallama hareketi kullanıldığında kamerayı aç</string>

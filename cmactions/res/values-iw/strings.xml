@@ -16,13 +16,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Gesture shortcuts -->
-  <string name="screen_gestures_panel_title">מחוות</string>
-  <string name="ambient_display_title">תצוגת התראות עמומה</string>
-  <string name="pick_up_gesture_title">הרמה</string>
-  <string name="pick_up_gesture_summary">הצג התראות בעת הרמה או הוצאה מאחסון</string>
-  <string name="ir_wake_up_title">נפנוף</string>
-  <string name="ir_wake_up_summary">הצג התראות בנפנוף ידך מול המסך</string>
   <string name="actions_title">פעולות</string>
   <string name="camera_gesture_title">סיבוב כפול</string>
   <string name="camera_gesture_summary">הפעל מצלמה בעת השימוש במחוות הסיבוב הכפול</string>

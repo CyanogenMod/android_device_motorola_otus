@@ -28,10 +28,10 @@
             android:summary="@string/pick_up_gesture_summary" />
 
         <SwitchPreference
-            android:key="gesture_ir_wake_up"
+            android:key="gesture_hand_wave"
             android:defaultValue="true"
-            android:title="@string/ir_wake_up_title"
-            android:summary="@string/ir_wake_up_summary" />
+            android:title="@string/hand_wave_gesture_title"
+            android:summary="@string/hand_wave_gesture_summary" />
     </PreferenceCategory>
 
     <PreferenceCategory

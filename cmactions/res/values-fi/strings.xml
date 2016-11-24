@@ -16,13 +16,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Gesture shortcuts -->
-  <string name="screen_gestures_panel_title">Eleet</string>
-  <string name="ambient_display_title">Ambient-näyttö</string>
-  <string name="pick_up_gesture_title">Nosto</string>
-  <string name="pick_up_gesture_summary">Näytä ilmoitukset nostaessa laitetta</string>
-  <string name="ir_wake_up_title">Heilautus</string>
-  <string name="ir_wake_up_summary">Näytä ilmoitukset vedettäessä käsi ruudun yli</string>
   <string name="actions_title">Tehtävät</string>
   <string name="camera_gesture_title">Tuplakierre</string>
   <string name="camera_gesture_summary">Avaa kamera kiertäessä laite kahdesti</string>
